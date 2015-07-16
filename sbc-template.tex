@@ -23,117 +23,25 @@
 
 \maketitle
 
+\maketitle
+\begin{abstract}
+	This paper presents ARM's architecture by describing some its issues,  specially the set of instructions.  ARM programming issues and the structure of its instructions are described in details. Moreover, the following subjects are also approched: ARM's memory hierarchy, ARM use cases and the ARM insertion in the market of processors. 
+\end{abstract}
+
+\begin{resumo} 
+	Este artigo aborda os principais aspectos da arquitetura ARM, descrevendo as características dessa arquitetura e dando ênfase ao seu conjunto de instruções, tanto na parte de programação quanto no que se refere a estrutura de cada instrução. O artigo, também, aborda temas como: hierarquia de memória da arquitetura ARM, a aplicação do ARM, a sua inserção no mercado de processadores e uma comparação com o seu concorrente, o MIPS.
+\end{resumo}
+
 \section{Introdução}
 
-Achar o caminho mais curto entre dois pontos é algo que se parece difícil à primeira vista, considerando que em um jogo, por exemplo, existem diversos caminhos que um personagem pode trilhar para atingir um objetivo, além de obstáculos que podem, eventualmente, impedir seu movimento. Dependendo do ambiente de atuação, pode tornar-se complicado encontrar uma boa solução para este problema em um tempo aceitável, de fato, mas graças a elegantes algoritmos propostos por estudiosos como Dijkstra, Peter Hart, Nils Nilsson e Bertram Raphael, é possível ter uma ideia clara e geral de como isso pode ser feito. Estes algoritmos atuam por meio da modelagem do ambiente em \emph{grafos}, que são estruturas matemáticas onde pontos podem ser representados por vértices e uma relação entre eles (no caso, vizinhança), arestas que conectam estes vértices.
+A arquitetura ARM é um conjunto de instruções arquitetônicas para processadores, desenvolvida pela companhia britânica \textit{ARM Holdings} em 1980. Os primeiros produtos baseados em ARM foram coprocessadores desenvolvidos para a série de  microcomputadores da BBC. Ao longo do tempo, a arquitetura ARM evoluiu para incluir características arquitetônicas que atendessem à crescente demanda por novas funcionalidades, alta performance e as necessidades de novos mercados emergentes.
 
-O algoritmo proposto por Dijkstra trabalha visitando os vértices do grafo a partir do ponto inicial, expandindo sua busca pelos vértices mais próximos do ponto inicial que ainda não foram visitados, até que o objetivo seja atingido. Este algoritmo dá a garantia de que o caminho mais curto será encontrado, porém não é tão rápido como, por exemplo, o algoritmo conhecido como Greedy BFS (Best-First-Search) ou Busca Gulosa em Profundidade. Este funciona de forma parecida, mas, ao invés de usar como critério para escolher um novo vértice sua distância do ponto inicial, utiliza uma \emph{heurística} que fornece a estimativa de distância entre um ponto e o objetivo. Este algoritmo pode funcionar de maneira muito mais rápida que o de Dijkstra, mas não há garantias de que achará o caminho mais curto se existirem obstáculos, por exemplo \cite{amit:2014}. O algoritmo tema deste trabalho, conhecido como A*, consiste numa fusão destas duas formas de busca de caminhos em um grafo. Foi descrito pela primeira vez em 1968 por Peter Hart, Nils Nilsson, e Bertram Raphael e é utilizado, principalmente, na produção de \emph{jogos} e em robótica.
+Estruturalmente a arquitetura ARM é baseada na arquitetura RISC, logo, utiliza um conjunto pequeno e altamente otimizado de instruções, em vez de um conjunto mais especializado encontrado em outros tipos de arquiteturas. Ter um conjunto de instruções neste formato faz com que o processador que utiliza essa arquitetura seja mais veloz em relação a processadores que utilizam a arquitetura CISC, além de ter um número de ciclos de clock menor, pois leva menos tempo para selecionar uma instrução.
 
-\section{Algoritmo A*} \label{sec:dado}
+Este artigo aborda conceitos importantes da arquitetura ARM e traz também uma explanação sobre as aplicações dos processadores ARM e a sua inserção no mercado tecnológico, além de compará-lo ao processador MIPS. Para que haja um melhor entendimento do assunto, o artigo foi dividido em cinco seções, são elas: história, arquitetura do conjunto de instruções, arquitetura de memória, aplicações e comparação entre MIPS e ARM.
 
-Tomando $g(x)$ como o custo total para se alcançar determinado nó $x$ e $h(x)$ o custo estimado para atingir o objetivo da busca (heurística), tem-se que $f(x) = g(x)+h(x)$ é o custo estimado total do caminho que $x$ intermedia. Dessa forma, se $g(x)$ é o caminho mais curto até $x$ e $h(x)$ o custo estimado do menor caminho de origem em $x$, então $f(x)$ é o custo da solução mais barata que contém $x$ \cite{russel:2010}. Esta é a base do funcionamento do A*.
+Antes de tratarmos da estrutura e do funcionamento da arquitetura ARM é importante compreendermos os princípios que foram usados no projeto de desenvolvimento da arquitetura. Com o decorrer dos anos, a arquitetura ARM passou por diversas evoluções ocasionando mudanças não somente na sua estrutura, mas também nos processadores ARM, ocasionando o surgimento das famílias de processadores. Todos estes aspectos fazem parte da história da arquitetura ARM, por isso serão abordados com maiores detalhes na primeira seção deste artigo.
 
-O algoritmo terá um resultado ótimo se algumas condições forem atendidas. Se o espaço de busca é uma árvore e a função heurística adotada é admissível, ou seja, nunca calcula exageradamente o custo para alcançar o nó de destino, haverá um resultado ótimo. Isto também vale se o espaço de busca for um grafo e $h(n)$, consistente, isto é, para cada nó $n$ e seu sucessor $n'$, vale que $h(n) \leq custo(n,n’) + h(n’)$ \cite{avila:2005}. Uma função heurística consistente sempre será admissível. Exemplos de heurísticas consistentes utilizadas em alguns contextos de aplicação do A* são: distância Euclidiana, distância de Manhattan, entre outras.
-
-O algoritmo possui um funcionamento simples. Existem dois conjuntos, o de \emph{nós abertos} e o de \emph{nós fechados}. O primeiro contém os nós que são candidatos a serem examinados. Inicialmente, este conjunto possui apenas um elemento: o nó inicial. Já o conjunto de nós fechados contém os elementos que já foram examinados, assim, inicialmente será vazio. Para cada nó, é armazenada a informação referente ao vizinho pelo qual foi alcançado, ou seja, seu nó \emph{pai}. A partir disto, é construído um laço de repetição onde o elemento da lista de abertos com menor valor de $f(n)$ é examinado. Se esse nó corresponder ao objetivo, então o caminho já foi encontrado. Senão, o nó é removido da lista de abertos e posto na de fechados. A partir daí, cada vizinho $n'$ desse nó é examinado e um \emph{custo de tentativa} é calculado, pela soma de $g(n)$ com o custo de $n$ a $n'$. Se $n'$ não está na lista de abertos e este custo de tentativa é menor que $g(n')$, então $n$ será armazenado como pai de $n'$ e seu $g(n')$ receberá o valor do custo de tentativa. Se $n'$ não estiver, de fato, no conjunto de nós abertos, será inserido nele.
-
-\begin{algorithm}[H]
-	\caption{A*}
-\begin{algorithmic}[1]
-		\Function{A*}{$origem, destino$}
-
-		\State $nos\_fechados\gets \{\};$ $nos\_abertos\gets \{destino\};$
-		\State $mapa\_navegados \gets \{\};$ 
-		\State $g\_custo[origem] \gets 0;$ 
-		\State $f\_custo[origem] \gets g\_custo[origem] + h(origem, destino);$ 
-		\While{$nos\_abertos$ não está vazio}
-		\State $atual\gets no$ em $nos\_abertos$ com menor valor de $f\_custo[];$
-		\If{$atual = destino$}
-		\State \textbf{retorne} $reconstruir\_caminho(mapa\_navegados, destino);$
-		\EndIf
-		
-		\State $nos\_abertos \gets nos\_abertos \backslash \{atual\};$
-		\State $nos\_fechados \gets nos\_fechados \cup \{atual\};$
-		\For{$vizinho$} {primeiro dos $vizinhos(atual)$} {último dos $vizinhos(atual)$}
-		
-			\If{$vizinho$ está em $nos\_fechados$}
-			\State \textbf{continue};
-			\EndIf
-			\State $g\_custo\_tentativa \gets g\_custo[atual]+custo\_entre(atual, vizinho);$
-			\If{$vizinho$ não está em $nos\_abertos$ ou $g\_custo\_tentativa < g\_custo[vizinho]$ }
-			\State $mapa\_navegados[vizinho] \gets g\_custo\_tentativa;$
-			\State $f\_custo[vizinho] \gets g\_custo[vizinho]+h(vizinho, destino);$ 
-			\State $mapa\_navegados[vizinho] \gets atual;$ 
-		\algstore{alg}
-		\end{algorithmic}
-\end{algorithm}		
-\begin{algorithm}	
-		\begin{algorithmic}[1]
-			\algrestore{alg}
-			\If{$vizinho$ não está em $nos\_abertos$}
-			\State $nos\_abertos \gets nos\_abertos \cup \{atual\};$
-			\EndIf
-			\EndIf
-			\EndFor
-			\EndWhile
-			\EndFunction\\
-			
-			\Function{reconstruir\_caminho}{$mapa\_navegados, destino$}
-			\State $caminho \gets \{atual\};$ 
-			\While{$atual$ está em $mapa\_navegados$}
-			\State $atual \gets mapa\_navegados[atual];$ 
-			\State $caminho \gets caminho \cup \{atual\};$ 
-			\EndWhile
-			\EndFunction
-\end{algorithmic}
-\end{algorithm}
-
-\section{Implementação}
-
-A implementação do algoritmo A* foi realizada na linguagem C++, com compilador de suporte à versão C++11. Os testes foram realizados no terminal de comandos do Linux.
-
-Esta implementação busca solucionar, especificamente, o problema de locomoção dentro do país de Romênia, proposto por \cite{russel:2010}. O objetivo, originalmente, é realizar a viagem entre a cidade de ``Arad'' e ``Bucharest'' passando pelo menor caminho possível. Para o funcionamento do algoritmo neste cenário, o autor propõe uma função heurística baseada na distância Euclidiana entre dois pontos. Assim, fornece uma tabela indicando a distância de cada cidade do mapa a ``Bucharest". Esta tabela foi adotada na implementação da heurística deste cenário, e isto faz com alguns testes não retornem o caminho mais curto, como será explicado posteriormente.
-
-\subsection{Testes}
-
-\textbf{\#1}
-\begin{verbatim}
-Origem: Arad
-Destino: Bucharest
-
-Menor caminho: Arad-> Sibiu-> Fagaras-> Bucharest
-\end{verbatim}
-\textbf{\#2}
-\begin{verbatim}
-Origem: Fagaras
-Destino: Craiova
-
-Menor caminho: Fagaras-> Sibiu-> Rimnicu Vilcea-> Craiova
-\end{verbatim}
-\textbf{\#3}
-\begin{verbatim}
-Origem: Rimnicu Vilcea
-Destino: Urziceni
-
-Menor caminho: Rimnicu Vilcea-> Pitesti-> Bucharest-> Urziceni
-\end{verbatim}
-\textbf{\#4}
-\begin{verbatim}
-Origem: Timisoara
-Destino: Craiova
-
-Menor caminho: Timisoara-> Lugoj-> Mehadia-> Dobreta-> Craiova
-\end{verbatim}
-\textbf{\#5}
-\begin{verbatim}
-Origem: Urziceni
-Destino: Dobreta
-
-Menor caminho: Urziceni-> Bucharest-> Fagaras-> Sibiu-> Arad->
- Timisoara-> Lugoj-> Mehadia-> Dobreta
-\end{verbatim}
-
-Neste último teste, o caminho retornado não foi o mínimo. A explicação para isto é que, como a função heurística utilizada no problema foi baseada na tabela do livro de \cite{russel:2010}, que fornece as distâncias aproximadas das cidades a Bucharest, o resultado perde admissibilidade quando a origem está próxima de Bucharest e o destino, longe. Isto acontece porque o algoritmo passa a adotar um comportamento oposto ao apropriado: escolhe os pontos mais distantes do destino para compor o caminho. Este comportamento não se aplica aos outros testes pois o destino está localizado sempre perto de Bucharest e a origem, distante, logo, retornam soluções ótimas para o problema.
 
 \section{Conclusões}
 
