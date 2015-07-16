@@ -1,0 +1,19 @@
+\begin{thebibliography}{}
+
+\bibitem[Muñoz-Avila 2005]{avila:2005}
+Muñoz-Avila, H. (2005).
+\newblock A* algorithm.
+\newblock {\em Topics on AI and Computer Game Programming}.
+
+\bibitem[Patel ]{amit:2014}
+Patel, A.
+\newblock Introduction to a*.
+\newblock {\em http://theory.stanford.edu/~amitp/GameProgramming/AStar
+  Comparison.html. Acesso em 05/06/2015}.
+
+\bibitem[Russel e Norvig 2010]{russel:2010}
+Russel, S. e Norvig, P. (2010).
+\newblock {\em Artificial Intelligence: A Modern Approach}.
+\newblock 3ª edição.
+
+\end{thebibliography}

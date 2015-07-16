@@ -1,0 +1,145 @@
+\documentclass[12pt]{article}
+
+\usepackage{Trabalho1-AnaVitoria}
+
+\usepackage{graphicx,url}
+
+%\usepackage[brazil]{babel}   
+\usepackage[latin1]{inputenc}  
+
+     
+\sloppy
+
+\title{Dado, Informação, Conhecimento e Competência}
+
+\author{Ana Vitória V. Cordeiro\inst{1}}
+
+
+\address{Instituto de Computação -- Universidade Federal do Amazonas
+  (UFAM)\\
+  Manaus -- AM -- Brasil\\avvc@icomp.ufam.edu.br
+}
+
+\begin{document} 
+
+\maketitle
+
+\begin{abstract}
+  This meta-paper describes the style to be used in articles and short papers
+  for SBC conferences. For papers in English, you should add just an abstract
+  while for the papers in Portuguese, we also ask for an abstract in
+  Portuguese (``resumo''). In both cases, abstracts should not have more than
+  10 lines and must be in the first page of the paper.
+\end{abstract}
+     
+\begin{resumo} 
+	Este artigo possui o objetivo de definir ou caracterizar os termos \emph{dado}, \emph{informação}, \emph{conhecimento} e \emph{competência}. A maioria das pessoas tende a confundir estes conceitos, por isso, será claramente explicitado a diferença entre eles, assim como a maneira com que estão relacionados. Depois de realizada uma análise sobre o assunto, será abordada uma situação do cotidiano que exemplifica e ajuda a esclarecer estas ideias.
+\end{resumo}
+
+\section{Introdução}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.4\textwidth]{pyramid.png}
+	\caption{A typical figure}
+	\label{fig:exampleFig1}
+\end{figure}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=.5\textwidth]{graphic.jpg}
+	\caption{This figure is an example of a figure caption taking more than one
+		line and justified considering margins mentioned in Section~\ref{sec:figs}.}
+	\label{fig:exampleFig2}
+\end{figure}
+
+\section{Dado} \label{sec:dado}
+
+O dicionário de Biblioteconomia e Arquivologia de CUNHA (2008), conceitua
+dado como \emph{a menor representação convencional e fundamental de uma informação (fato, noção, objeto, nome próprio, numero, estatística, etc.) sob forma analógica
+	ou digital passível de ser submetida a processamento manual ou automático.
+	Em sentido mais amplo, toda a informação quantificável (números, letras,
+	gráficos, imagens, sons ou outra combinação desses tipos); Sinais ou códigos
+	usados para alimentação, processamento, e produção de um resultado}. 
+
+Pode-se observar que a própria literatura tende a equiparar o conceito de dado e informação. Estes dois termos não são sinônimos, apesar de serem intercambiáveis em alguns contextos. Um dado pode ser visto como um elemento de representação de uma ou mais informações, como será explicado na próxima sessão. Valdemar Setzer define dado como uma sequência de símbolos quantificados ou quantificáveis \cite{setzer:01}. Dessa forma, é possível observar que um número, um elemento estatístico, uma imagem, um texto são dados. Ou seja, uma representação dos fatos, conceitos ou instruções de maneira normalizada, sem significado próprio, adaptando-se a manipulações estruturais e processamentos feitos pelo ser humano ou máquinas.
+
+\section{Informação} \label{sec:informacao}
+
+Uma informação pode ser caracterizada como uma abstração que possui um significado formado a partir da interpretação de uma pessoa \cite{setzer:01}. Pode ser representada através de dados ou não. Por exemplo, se um jornal transmite a notícia de que amanhã o tempo estará nublado em Manaus, cada leitor entende o que ouviu segundo suas percepções a respeito dos dados "Manaus", "dublado", "amanhã", constituindo, assim, uma informação. Mas, se um morador de Manaus olha pela sua janela e verifica que o céu está repleto de nuvem escuras e chega a conclusão de que o tempo está nublado, também está obtendo informação, porém, não representada exteriormente por dados. 
+
+Já que a informação é composta de significado, um computador não é capaz de processá-la diretamente. Isto é feito como em um processo de \emph{conversão}: a informação é desconstituída e transformada em dados, que podem ser manipulados e retransmitidos a uma pessoa. Se seu entendimento capta esses dados como algo inteligível, é como se estes estivessem sendo "convertidos" em informação novamente, com um significado diferente do inicial ou não. Se os dados foram rearranjados de forma que o receptor não consiga compreender, isto deixa de constituir uma informação.
+
+
+\section{Conhecimento}
+
+O conhecimento é uma abstração interior e pessoal de algo que foi vivenciado ou experimentado por alguém \cite{Castro:2011}. Uma informação pode tornar-se conhecimento quando é aceita e conservada por um indivíduo como uma compreensão adequada do que é verdadeiro e uma válida interpretação da realidade.
+
+
+\section{CD-ROMs and Printed Proceedings}
+
+In some conferences, the papers are published on CD-ROM while only the
+abstract is published in the printed Proceedings. In this case, authors are
+invited to prepare two final versions of the paper. One, complete, to be
+published on the CD and the other, containing only the first page, with
+abstract and ``resumo'' (for papers in Portuguese).
+
+\section{Sections and Paragraphs}
+
+Section titles must be in boldface, 13pt, flush left. There should be an extra
+12 pt of space before each title. Section numbering is optional. The first
+paragraph of each section should not be indented, while the first lines of
+subsequent paragraphs should be indented by 1.27 cm.
+
+\subsection{Subsections}
+
+The subsection titles must be in boldface, 12pt, flush left.
+
+\section{Figures and Captions}\label{sec:figs}
+
+
+Figure and table captions should be centered if less than one line
+(Figure~\ref{fig:exampleFig1}), otherwise justified and indented by 0.8cm on
+both margins, as shown in Figure~\ref{fig:exampleFig2}. The caption font must
+be Helvetica, 10 point, boldface, with 6 points of space before and after each
+caption.
+
+
+In tables, try to avoid the use of colored or shaded backgrounds, and avoid
+thick, doubled, or unnecessary framing lines. When reporting empirical data,
+do not use more decimal digits than warranted by their precision and
+reproducibility. Table caption must be placed before the table (see Table 1)
+and the font used must also be Helvetica, 10 point, boldface, with 6 points of
+space before and after each caption.
+
+\begin{table}[ht]
+\centering
+\caption{Variables to be considered on the evaluation of interaction
+  techniques}
+\label{tab:exTable1}
+\includegraphics[width=.7\textwidth]{table.jpg}
+\end{table}
+
+\section{Images}
+
+All images and illustrations should be in black-and-white, or gray tones,
+excepting for the papers that will be electronically available (on CD-ROMs,
+internet, etc.). The image resolution on paper should be about 600 dpi for
+black-and-white images, and 150-300 dpi for grayscale images.  Do not include
+images with excessive resolution, as they may take hours to print, without any
+visible difference in the result. 
+
+\section{References}
+
+Bibliographic references must be unambiguous and uniform.  We recommend giving
+the author names references in brackets, e.g. \cite{knuth:84},
+\cite{boulic:91}, and \cite{smith:99}.
+
+The references must be listed using 12 point font size, with 6 points of space
+before each reference. The first line of each reference should not be
+indented, while the subsequent should be indented by 0.5 cm.
+
+\bibliographystyle{sbc}
+\bibliography{sbc-template}
+
+\end{document}
